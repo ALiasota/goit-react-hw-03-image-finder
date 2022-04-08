@@ -1,17 +1,13 @@
-export const App = () => {
-  return (
-    <div
-      style={{
-        height: '100vh',
-        display: 'flex',
-        justifyContent: 'center',
-        alignItems: 'center',
-        fontSize: 40,
-        textTransform: 'uppercase',
-        color: '#010101',
-      }}
-    >
-      React homework template
-    </div>
-  );
+import { render } from '@testing-library/react';
+import React, {Component} from 'react';
+import Searchbar from './Searchbar';
+
+class App extends Component {
+  render() {
+    return(
+      <Searchbar />
+    )
+  }
 };
+
+export default App;
