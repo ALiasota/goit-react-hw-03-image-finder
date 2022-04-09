@@ -1,11 +1,12 @@
 import axios from 'axios';
 
-axios.defaults.headers.common['Authorization'] = 'key 25783532-c25c49afce5183be9881181c4';
+const key = '25783532-c25c49afce5183be9881181c4';
 
-const fetchImages = ({searchQuery='', curPage=1, pageSize=12})=>{
+const fetchImages = ({searchQuery='', currentPage=1, pageSize=12})=>{
     return axios
         .get(
-            `https://pixabay.com/api/q=${searchQuery}&page=${curPage}&image_type=photo&orientation=horizontal&per_page=${pageSize}`
+            //    'https://pixabay.com/api/?key=25783532-c25c49afce5183be9881181c4&q=yellow+flowers&image_type=photo'
+            `https://pixabay.com/api/?q=${searchQuery}&key=${key}&page=${currentPage}&image_type=photo&orientation=horizontal&per_page=${pageSize}`
             )
         .then(response => response.data);
 }
