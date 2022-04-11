@@ -1,4 +1,4 @@
-// import { render } from '@testing-library/react';
+import { render } from '@testing-library/react';
 
 import React, {Component} from 'react';
 import styles from './App.module.css';
@@ -46,8 +46,7 @@ class App extends Component {
 
     this.setState({isLoading: true});
 
-    imagesApi
-    .fetchImages(options)
+    imagesApi(options)    
     .then(({hits}) =>{
       
       this.setState( prevState =>({
