@@ -1,4 +1,5 @@
 import styles from './ImageGalleryItem.module.css';
+import propTypes from 'prop-types';
 
 const ImageGalleryItem = ({smallImg, id, openModal})=> {
     return(
@@ -7,5 +8,11 @@ const ImageGalleryItem = ({smallImg, id, openModal})=> {
         </li>
     )
 };
+
+ImageGalleryItem.propTypes = {
+    openModal: propTypes.func.isRequired,
+    smallImg: propTypes.string.isRequired,
+    id: propTypes.number.isRequired       
+  }
 
 export default ImageGalleryItem;

@@ -1,4 +1,5 @@
 import axios from 'axios';
+import propTypes from 'prop-types';
 
 const key = '25783532-c25c49afce5183be9881181c4';
 
@@ -9,5 +10,11 @@ const fetchImages = ({searchQuery='', currentPage=1, pageSize=12})=>{
             )
         .then(response => response.data);
 }
+
+fetchImages.propTypes = {
+    searchQuery: propTypes.string.isRequired,
+    currentPage: propTypes.number,
+    pageSize: propTypes.number       
+  }
 
 export default fetchImages;

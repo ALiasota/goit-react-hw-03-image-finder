@@ -1,7 +1,7 @@
 import React, {Component} from "react";
 import styles from './Searchbar.module.css';
 import { ReactComponent as SearchBtn } from './search.svg';
-
+import propTypes from 'prop-types';
 
 
 
@@ -68,5 +68,10 @@ class Searchbar extends Component {
         )
     }
 }
+
+Searchbar.propTypes = {
+    onSubmit: propTypes.func.isRequired,
+    
+  }
 
 export default Searchbar;

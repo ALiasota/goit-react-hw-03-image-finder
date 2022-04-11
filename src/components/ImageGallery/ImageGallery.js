@@ -1,5 +1,7 @@
 import styles from './ImageGallery.module.css';
+import propTypes from 'prop-types';
 import ImageGalleryItem from '../ImageGalleryItem';
+
 
 const ImageGallery = ({images, openModal}) => {
     
@@ -14,5 +16,10 @@ const ImageGallery = ({images, openModal}) => {
         </ul>
     )
 }
+
+ImageGallery.propTypes = {
+    openModal: propTypes.func.isRequired,
+    images: propTypes.arrayOf(propTypes.object).isRequired       
+  }
 
 export default ImageGallery;
