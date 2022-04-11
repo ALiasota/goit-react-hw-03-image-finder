@@ -1,8 +1,12 @@
 import React, {Component} from "react";
 import styles from './Searchbar.module.css';
 import { ReactComponent as SearchBtn } from './search.svg';
-// import { ToastContainer, toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
+
+
+
+
+
+
 
 class Searchbar extends Component {
    constructor() {
@@ -13,15 +17,16 @@ class Searchbar extends Component {
    } 
           
 
-    handleSubmit = e => {        
+    handleSubmit = e => {         
         e.preventDefault();        
         const query = this.state.searchQuery.trim();
         if(query === '') {
             alert("Enter search word");
-            // toast.error("Enter search word");
+           
+           
             return;
         }
-        
+       
         this.props.onSubmit(query);
 
         this.setState({

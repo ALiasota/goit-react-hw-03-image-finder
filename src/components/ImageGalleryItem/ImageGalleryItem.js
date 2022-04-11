@@ -1,9 +1,9 @@
 import styles from './ImageGalleryItem.module.css';
 
-const ImageGalleryItem = ()=> {
+const ImageGalleryItem = ({smallImg, id, openModal})=> {
     return(
-        <li className={styles.galleryItem}>
-            <img className={styles.galleryItemImg} src="" alt="" />
+        <li className={styles.galleryItem} onClick={()=>openModal(id)}>
+            <img className={styles.galleryItemImg} src={smallImg} alt="" />
         </li>
     )
 };
