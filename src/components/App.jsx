@@ -8,6 +8,7 @@ import Loader from "./Loader";
 import Button from './Button';
 import ImageGallery from './ImageGallery';
 import Modal from './Modal';
+import { animateScroll as scroll } from "react-scroll";
 
 class App extends Component {
   state = {
@@ -24,6 +25,7 @@ class App extends Component {
   componentDidUpdate(prevProps, prevState) {
     if (prevState.searchQuery !== this.state.searchQuery) {
         this.fetchImages();
+        window.scrollBy(0, 400);
     }
   }
 
@@ -57,6 +59,9 @@ class App extends Component {
     })
     .catch(error => this.setState({error}))
     .finally(this.setState({isLoading: false}));
+    
+    scroll.scrollToBottom();
+    
 }
 
   toggleModal = () => {
@@ -83,7 +88,11 @@ class App extends Component {
       <Searchbar onSubmit={this.onChangeQuery}/>
       {isLoading && <Loader />}
       {images.length > 0 && <ImageGallery openModal={this.openModal} images={images}/>}
-      {shouldRenderLoadMoreButton && <Button onClick={this.fetchImages}/>}
+      {shouldRenderLoadMoreButton && 
+      
+        <Button onClick={this.fetchImages}/>
+      
+      }
       {showModal && <Modal largeImg={this.largeImageURL} onClose={this.toggleModal}/>}
       </div>
     )
