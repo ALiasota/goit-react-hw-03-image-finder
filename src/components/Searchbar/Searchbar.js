@@ -2,7 +2,7 @@ import React, {Component} from "react";
 import styles from './Searchbar.module.css';
 import { ReactComponent as SearchBtn } from './search.svg';
 import propTypes from 'prop-types';
-
+import Notiflix from 'notiflix';
 
 
 
@@ -21,7 +21,8 @@ class Searchbar extends Component {
         e.preventDefault();        
         const query = this.state.searchQuery.trim();
         if(query === '') {
-            alert("Enter search word");
+           
+            Notiflix.Notify.info('Enter search word');
            
            
             return;
