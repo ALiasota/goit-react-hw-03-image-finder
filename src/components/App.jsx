@@ -25,8 +25,7 @@ class App extends Component {
 
   componentDidUpdate(prevProps, prevState) {
     if (prevState.searchQuery !== this.state.searchQuery) {
-        this.fetchImages();
-        window.scrollBy(0, 400);
+        this.fetchImages();        
     }
     if(this.state.images.length > 12) {
           scroll.scrollToBottom();
