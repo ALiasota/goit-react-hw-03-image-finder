@@ -5,12 +5,12 @@ import ImageGalleryItem from '../ImageGalleryItem';
 const ImageGallery = ({ images, openModal }) => {
   return (
     <ul className={styles.gallery}>
-      {images.map(image => (
+      {images.map(({ id, webformatURL }) => (
         <ImageGalleryItem
-          key={image.id}
+          key={id}
           openModal={openModal}
-          id={image.id}
-          smallImg={image.webformatURL}
+          id={id}
+          smallImg={webformatURL}
         />
       ))}
     </ul>
@@ -19,7 +19,12 @@ const ImageGallery = ({ images, openModal }) => {
 
 ImageGallery.propTypes = {
   openModal: propTypes.func.isRequired,
-  images: propTypes.arrayOf(propTypes.object).isRequired,
+  images: propTypes.arrayOf(
+    propTypes.shape({
+      id: propTypes.number.isRequired,
+      webformatURL: propTypes.string.isRequired,
+    })
+  ).isRequired,
 };
 
 export default ImageGallery;

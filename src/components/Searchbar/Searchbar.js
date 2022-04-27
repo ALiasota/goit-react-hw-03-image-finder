@@ -1,78 +1,59 @@
-import React, {Component} from "react";
+import React, { Component } from 'react';
 import styles from './Searchbar.module.css';
 import { ReactComponent as SearchBtn } from './search.svg';
 import propTypes from 'prop-types';
 import Notiflix from 'notiflix';
 
-
-
-
-
 class Searchbar extends Component {
-   constructor() {
-       super();
-       this.state = {            
-            searchQuery:''            
-        }        
-   } 
-          
+  state = {
+    searchQuery: '',
+  };
 
-    handleSubmit = e => {         
-        e.preventDefault();        
-        const query = this.state.searchQuery.trim();
-        if(query === '') {
-           
-            Notiflix.Notify.info('Enter search word');
-           
-           
-            return;
-        }
-       
-        this.props.onSubmit(query);
+  handleSubmit = e => {
+    e.preventDefault();
+    const query = this.state.searchQuery.trim();
+    if (query === '') {
+      Notiflix.Notify.info('Enter search word');
 
-        this.setState({
-            searchQuery: ''            
-        });
-        
+      return;
     }
 
-   
-    handleChange = e => {
-        
-        this.setState({
-            searchQuery: e.currentTarget.value            
-        })
-    }
+    this.props.onSubmit(query);
+  };
 
-    render() {
-        return(
-            <header className={styles.searchbar}>
-            <form 
-                className={styles.form}
-                onSubmit={this.handleSubmit}
-                >
-                <button type="submit" className={styles.button} >
-                <span className={styles.buttonLabel} ><SearchBtn width="40" height="40"/></span>
-                </button>
+  handleChange = e => {
+    this.setState({
+      searchQuery: e.currentTarget.value,
+    });
+  };
 
-                <input                
-                className={styles.input}
-                type="text"
-                autoComplete="off"
-                autoFocus
-                placeholder="Search images and photos"
-                value={this.state.searchQuery}
-                onChange={this.handleChange}
-                />
-            </form>
-            </header>
-        )
-    }
+  render() {
+    return (
+      <header className={styles.searchbar}>
+        <form className={styles.form} onSubmit={this.handleSubmit}>
+          <button type="submit" className={styles.button}>
+            <span className={styles.buttonLabel}>
+              <SearchBtn width="40" height="40" />
+            </span>
+          </button>
+
+          <input
+            className={styles.input}
+            type="text"
+            autoComplete="off"
+            autoFocus
+            placeholder="Search images and photos"
+            value={this.state.searchQuery}
+            onChange={this.handleChange}
+          />
+        </form>
+      </header>
+    );
+  }
 }
 
 Searchbar.propTypes = {
-    onSubmit: propTypes.func.isRequired,
-    
-  }
+  onSubmit: propTypes.func.isRequired,
+};
 
 export default Searchbar;
